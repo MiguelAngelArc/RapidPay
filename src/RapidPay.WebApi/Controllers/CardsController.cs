@@ -37,4 +37,32 @@ public class CardsController : BaseController
             return DefaultCatch(e);
         }
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Post([FromRoute] long id)
+    {
+        try {
+            var userId = _contextAccesor.GetUserIdentity().UserId;
+            var result = await _cardManagementService.GetCardBalance(id, userId);
+            return Ok(result);
+        }
+        catch (Exception e){
+            return DefaultCatch(e);
+        }
+    }
+
+    [HttpPost("pay")]
+    public async Task<IActionResult> Payment([FromBody] DTOs.Payment payment)
+    {
+        try {
+            payment.UserId = _contextAccesor.GetUserIdentity().UserId;
+            var result = await _cardManagementService.Pay(payment);
+            return Ok(new {
+                successful = result
+            });
+        }
+        catch (Exception e){
+            return DefaultCatch(e);
+        }
+    }
 }

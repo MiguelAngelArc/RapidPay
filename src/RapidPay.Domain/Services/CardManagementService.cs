@@ -26,8 +26,8 @@ public class CardManagementService : ICardManagementService
 
         var dbCard = new DbModels.Card {
             Number = card.Number!,
-            Balance = card.Balance,
-            UserId = 1
+            Balance = Math.Round(card.Balance, 4),
+            UserId = card.UserId!.Value
         };
         await _unitOfWork.Cards.AddAsync(dbCard);
         await _unitOfWork.SaveChangesAsync();
@@ -35,11 +35,17 @@ public class CardManagementService : ICardManagementService
         return card;
     }
 
-    public async Task<DTOs.Card> GetCardBalance(long cardId)
+    public async Task<DTOs.Card> GetCardBalance(long cardId, long userId)
     {
         var card = await _unitOfWork.Cards.FirstOrDefaultAsync(c => c.Id == cardId)
             ?? throw new Exception(ErrorCodes.CardNotFound);
+
+        if (card.UserId != userId)
+            throw new Exception(ErrorCodes.CardDoesNotBelongToUser);
+
         return new DTOs.Card {
+            Id = card.Id,
+            UserId = card.UserId,
             Balance = card.Balance,
             Number = card.Number
         };
@@ -49,8 +55,12 @@ public class CardManagementService : ICardManagementService
     {
         var card = await _unitOfWork.Cards.FirstOrDefaultAsync(c => c.Id == payment.CardId)
             ?? throw new Exception(ErrorCodes.CardNotFound);
-        var fee = Convert.ToDecimal(_paymentFeesModule.GetFee());
-        var finalItemPrice = payment.ItemPrice * (1 + fee);
+        
+        if (card.UserId != payment.UserId)
+            throw new Exception(ErrorCodes.CardDoesNotBelongToUser);
+
+        var fee = _paymentFeesModule.GetFee();
+        var finalItemPrice = Math.Round(payment.ItemPrice * (1 + fee), 4);
 
         if (card.Balance < finalItemPrice)
             throw new Exception(ErrorCodes.MoneyInCardNotEnough);

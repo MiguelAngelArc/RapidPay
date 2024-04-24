@@ -17,6 +17,19 @@ services:
       SSQL_PID: Express
     networks:
       - demo
+  
+  app:
+    image: rapid-pay-api:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: rapid_pay_container
+    ports:
+      - 5001:80
+    environment:
+      DOTNET_ENVIRONMENT: Production
+    networks:
+      - demo
 
 networks:
   demo:

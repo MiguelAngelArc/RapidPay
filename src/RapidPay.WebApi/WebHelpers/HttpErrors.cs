@@ -31,6 +31,10 @@ public static class HttpErrors {
         [ErrorCodes.WrongPassword] = new HttpErrorInfo {
             HttpStatusCode = 400,
             ErrorCode = ErrorCodes.WrongPassword
+        },
+        [ErrorCodes.CardDoesNotBelongToUser] = new HttpErrorInfo {
+            HttpStatusCode = 400,
+            ErrorCode = ErrorCodes.CardDoesNotBelongToUser
         }
     };
 }

@@ -4,6 +4,7 @@ public static class ErrorCodes
 {
     public const string UnknownError = "unknown-error";
     public const string CardNotFound = "card-not-found";
+    public const string CardDoesNotBelongToUser = "card-does-not-belong-to-user";
     public const string CardNumberAlreadyExists = "card-number-already-exists";
     public const string MoneyInCardNotEnough = "money-in-card-not-enough";
     public const string UserNotFound = "user-not-found";

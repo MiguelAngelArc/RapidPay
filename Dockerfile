@@ -9,6 +9,9 @@ COPY ./src/RapidPay.WebApi/*.csproj ./src/RapidPay.WebApi/
 RUN mkdir -p ./src/RapidPay.Models/
 COPY ./src/RapidPay.Models/*.csproj ./src/RapidPay.Models/
 
+RUN mkdir -p ./src/RapidPay.Domain/
+COPY ./src/RapidPay.Domain/*.csproj ./src/RapidPay.Domain/
+
 COPY RapidPay.sln ./
 
 RUN echo "MaxProtocol = TLSv1.2" >> /etc/ssl/openssl.cnf && dotnet restore

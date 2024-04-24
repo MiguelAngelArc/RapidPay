@@ -20,7 +20,7 @@ TokenValidationParameters tokenValidationParameters = new()
 };
 
 builder.Services.AddDbContext<RapidPayDBContext>(options => options.UseSqlServer(configuration.GetConnectionString("RapidPay")));
-// services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IJwtManager, JwtManager>(s => new JwtManager(tokenValidationParameters));
 // services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IAuthService, AuthService>();

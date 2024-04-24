@@ -7,5 +7,5 @@ public interface ICardManagementService
 {
     Task<DTOs.Card> CreateCard(DTOs.Card card);
     Task<bool> Pay(DTOs.Payment payment);
-    Task<DTOs.Card> GetCardBalance(long cardId);
+    Task<DTOs.Card> GetCardBalance(long cardId, long userId);
 }
