@@ -7,7 +7,7 @@ public class PaymentFeesModule : IPaymentFeesModule
     private const int numberOfSecondsBetweenEachFeeChange = 3600;
 
     public PaymentFeesModule() {
-        currentFee = GenerateRandomeFee();
+        currentFee = GenerateRandomeFee(1); // First fee should be less than 1 (< 100%) [I think]
         nextFeeDate = DateTime.Now.AddSeconds(numberOfSecondsBetweenEachFeeChange);
     }
 
@@ -21,8 +21,8 @@ public class PaymentFeesModule : IPaymentFeesModule
         return currentFee;
     }
 
-    private decimal GenerateRandomeFee() {
-        var rawFee = new Random().NextDouble() * 2; // Generate number from 0 to 2
+    private decimal GenerateRandomeFee(int multiplier = 2) {
+        var rawFee = new Random().NextDouble() * multiplier; // Generate number from 0 to 2
         return Math.Round(Convert.ToDecimal(rawFee), 4);
     }
 }

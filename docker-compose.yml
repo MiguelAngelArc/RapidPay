@@ -10,8 +10,6 @@ services:
       - 1433:1433
     environment:
       ACCEPT_EULA: Y
-      # MSSQL_DB: CloudPMDatamart
-      # MSSQL_USER: MyUser
       MSSQL_SA_PASSWORD: P455w0rd
       SA_PASSWORD: P455w0rd
       SSQL_PID: Express

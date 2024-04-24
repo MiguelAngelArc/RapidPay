@@ -26,7 +26,6 @@ builder.Services.AddScoped<IJwtManager, JwtManager>(s => new JwtManager(tokenVal
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddSingleton<IPaymentFeesModule, PaymentFeesModule>();
 builder.Services.AddScoped<ICardManagementService, CardManagementService>();
-// services.AddScoped<CustomJwtBearerEvents>();
 builder.Services.AddAuthentication().AddJwtBearer(options => {
     options.TokenValidationParameters = tokenValidationParameters;
 });

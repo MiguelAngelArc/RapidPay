@@ -65,7 +65,6 @@ public class CardManagementService : ICardManagementService
         if (card.Balance < finalItemPrice)
             throw new Exception(ErrorCodes.MoneyInCardNotEnough);
 
-        // var finalItemPrice = 
         var dbPayment = new DbModels.Payment {
             Fee = fee,
             ItemPrice = payment.ItemPrice,

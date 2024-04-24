@@ -18,12 +18,10 @@ public class UsersController : BaseController {
         _logger = logger;
     }
 
-    // POST api/values
     [HttpPost("sign-in")]
     public async Task<IActionResult> SignIn([FromBody] SignInModel signInModel) {
         try{
             var token = await _usersDomain.SignIn(signInModel);
-            // bool saveAuthInCookie = HttpContext.Request.Headers[AppConstants.SaveAuthInCookieHeader] == "true";
             return Ok(token);
         }
         catch (Exception e) {
@@ -35,7 +33,6 @@ public class UsersController : BaseController {
     public async Task<IActionResult> SignUp([FromBody] SignUpModel signUpModel) {
         try {
             var token = await _usersDomain.SignUp(signUpModel);
-            // bool saveAuthInCookie = HttpContext.Request.Headers[AppConstants.SaveAuthInCookieHeader] == "true";
             return Ok(token);
         }
         catch (Exception e) {

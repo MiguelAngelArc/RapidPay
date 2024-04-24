@@ -20,7 +20,7 @@ public class AuthService : IAuthService {
     public async Task<JsonWebToken> SignIn(SignInModel signInModel) {
         var user = await _unitOfWork.Users.FirstOrDefaultAsync(u => u.Email == signInModel.Email) 
             ?? throw new Exception(ErrorCodes.UserNotFound);
-        // var (Verified, NeedsUpgrade) = passwordHasher.Check(user.Password, signInModel.Password);
+
         if (user.Password != signInModel.Password)
             throw new Exception(ErrorCodes.WrongPassword);
 
