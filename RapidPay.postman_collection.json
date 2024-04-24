@@ -209,7 +209,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "",
+			"value": "http://localhost:5001",
 			"type": "string"
 		},
 		{

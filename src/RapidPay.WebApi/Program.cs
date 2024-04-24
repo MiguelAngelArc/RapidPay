@@ -24,7 +24,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IJwtManager, JwtManager>(s => new JwtManager(tokenValidationParameters));
 // services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IPaymentFeesModule, PaymentFeesModule>();
+builder.Services.AddSingleton<IPaymentFeesModule, PaymentFeesModule>();
 builder.Services.AddScoped<ICardManagementService, CardManagementService>();
 // services.AddScoped<CustomJwtBearerEvents>();
 builder.Services.AddAuthentication().AddJwtBearer(options => {
