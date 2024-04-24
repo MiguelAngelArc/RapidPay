@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"number\": \"686606707427901\",\n  \"balance\": 357896.3652\n}",
+					"raw": "{\n  \"number\": \"686606707427986\",\n  \"balance\": 45000.3652\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -51,7 +51,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"cardId\": 5,\n  \"ItemPrice\": 3500.789\n}",
+					"raw": "{\n  \"cardId\": 1,\n  \"ItemPrice\": 3500.789\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -214,7 +214,7 @@
 		},
 		{
 			"key": "accessToken",
-			"value": ""
+			"value": "Make a SignIn or SignUp request to get a initial one"
 		}
 	]
 }
