@@ -6,7 +6,9 @@ using RapidPay.WebApi.WebHelpers;
 namespace RapidPay.WebApi.Controllers;
 
 using DTOs = RapidPay.Models.DTOs;
-
+/// <summary>
+/// Card management controller
+/// </summary>
 [ApiController]
 [Route("[controller]")]
 [Authorize]
@@ -24,7 +26,10 @@ public class CardsController : BaseController
         _cardManagementService = cardManagementService;
         _contextAccesor = contextAccesor;
     }
-
+    /// <summary>
+    /// Endpoint to create card
+    /// </summary>
+    /// <param name="card">The card payload</param>
     [HttpPost(Name = "CreateCard")]
     public async Task<IActionResult> Post([FromBody] DTOs.Card card)
     {
@@ -38,8 +43,12 @@ public class CardsController : BaseController
         }
     }
 
+    /// <summary>
+    /// Endpoint to get card balance
+    /// </summary>
+    /// <param name="id">The id of the card we want to retrieve the balance</param>
     [HttpGet("{id}")]
-    public async Task<IActionResult> Post([FromRoute] long id)
+    public async Task<IActionResult> GetCardBalance([FromRoute] long id)
     {
         try {
             var userId = _contextAccesor.GetUserIdentity().UserId;
@@ -51,6 +60,10 @@ public class CardsController : BaseController
         }
     }
 
+    /// <summary>
+    /// Endpoint to make a payment
+    /// </summary>
+    /// <param name="payment">The payment payload</param>
     [HttpPost("pay")]
     public async Task<IActionResult> Payment([FromBody] DTOs.Payment payment)
     {

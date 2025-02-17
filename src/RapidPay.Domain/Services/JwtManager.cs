@@ -6,6 +6,7 @@ using RapidPay.Models.DTOs;
 
 namespace RapidPay.Domain.Services;
 
+/// <inheritdoc />
 public class JwtManager : IJwtManager {
     private readonly JwtSecurityTokenHandler tokenHandler;
     private readonly TokenValidationParameters tokenValidationParameters;
