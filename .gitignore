@@ -492,3 +492,4 @@ $RECYCLE.BIN/
 # .tfstate files
 .terraform.lock.hcl
 .vscode/
+doxygen/
